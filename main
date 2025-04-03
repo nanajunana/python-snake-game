@@ -1,0 +1,35 @@
+#STILL A PROTOTYPE
+
+import time
+from turtle import Turtle, Screen
+
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.title("Snake Game")
+screen.tracer(0)
+
+coordinate = [0, -20, -40]
+snake_body = []
+
+for _ in range (0,3):
+    new_body = Turtle("square")
+    new_body.penup()
+    new_body.color("white")
+    new_body.goto(x=coordinate[_], y=0)
+    snake_body.append(new_body)
+
+game = True
+
+while game:
+    screen.update()
+    time.sleep(0.1)
+    for i in range(len(snake_body)-1,0,-1):
+        x = snake_body[i-1].xcor()
+        y = snake_body[i-1].ycor()
+        snake_body[i].goto(x= x, y=y)
+    snake_body[0].forward(20)
+
+
+
+screen.exitonclick()
